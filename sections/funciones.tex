@@ -1,0 +1,154 @@
+\section{Funciones}
+%% Límite de una función vs límite de sucesión %%
+\subsection{Sucesiones para calcular límites}
+\teorema{
+	\textbf{\underline{Formalización}}: Sea
+	\begin{itemize}
+		\item $F: A \subset \mathbb{R}^n \to \mathbb{R}^m$
+		\item $P \in \bar{A}$
+		\item $L \in \mathbb{R}^m$
+	\end{itemize}
+	\textbf{Tenemos que:}
+	\begin{equation}
+		\begin{split}
+			\lim_{X \to P} F(X) = L
+		\end{split}
+		\qquad\Longleftrightarrow\qquad
+		\begin{split}
+			\forall \ &P_n \subset A: P_n \neq P \\
+			&P_n \to P
+		\end{split}
+	\end{equation}
+}
+
+\subsection{Propiedades de funciones continuas}
+%% Si cont. y f(Pn) ≥ 0 => lim f(P) ≥ 0
+\subsubsection{Si $f$ cont. y $P_n \subset A \text{ / } \forall \ n \in \mathbb{N}: f(P_n) \geq 0 \implies \lim f(P) \geq 0$}
+\label{subsec:suc_mayor_a_0_entonces_supremo_mayor_a_0}
+\teorema{
+	\textbf{\underline{Formalización}}: si
+	\begin{itemize}
+		\item $f$ contínua
+		\item $\{P_n\} \subset A \text{ / } P_n \to P$ 
+		\item $\forall \ n \in \mathbb{N}: f(P_n) \geq 0\ $
+	\end{itemize}
+	$\implies f(P) \geq 0$
+	\vskip 8pt
+	\noindent \textbf{\underline{Observación}}: El caso $\leq$ es análogo.
+	\vskip 8pt
+	\noindent \textbf{\underline{Idea}}: Por absurdo. Elegir un $\epsilon$ cualquiera para la sucesión, plantear el módulo de la definición, splittear el módulo y concluir que $f(P)$ no puede ser negativo.
+}
+
+%% Si f(p) > 0 => existe entorno en f(p) / f(x) > 0 %%
+\subsubsection{Si $f$ cont. y $f(P) > 0 \implies f$ es mayor a $0$ en un entorno de $P$}
+\label{subsec:f_mayor_a_0_en_entorno}
+\teorema{
+	\textbf{\underline{Formalización}}: si
+	\begin{itemize}
+		\item $f$ contínua
+		\item $f(P) > 0$ 
+	\end{itemize}
+	$\implies \exists \ r > 0 \text{ / } \forall \ X \in U: f(X) > 0 \text{, siendo }U = B_r(P) \cap A$
+	\vskip 8pt
+	\noindent \textbf{\underline{Observación}}: El caso $<$ es análogo.
+	\vskip 8pt
+	\noindent \textbf{\underline{Idea}}: Por absurdo. Sea $\{a_n\}$ la sucesión que tiende a $P$ pero que $\forall n \in \mathbb{n}: f(a_n) \leq 0$, por el teorema \ref{subsec:suc_mayor_a_0_entonces_supremo_mayor_a_0}, $f(P)$ tiene el mismo signo (o a lo sumo se nula) que la sucesión, lo cual contradice la hipótesis.
+}
+
+%% Si f(a)f(b) < 0 => existe c / f(c) = 0 %%
+\subsubsection{Si $f$ cont. en [a, b] / $f(a)f(b) < 0 \implies \exists \ c \in (a, b) \text{ / } f(c) = 0$ (Bolzano/T.V.M.)}
+\teorema{
+	\textbf{\underline{Formalización}}: si
+	\begin{itemize}
+		\item $f: [a, b] \to \mathbb{R}$ contínua
+		\item $f(a)f(b) < 0$ 
+	\end{itemize}
+	$\implies \exists \ c \in (a, b) \text{ / } f(c) = 0$.
+	\vskip 8pt
+	\noindent \textbf{\underline{Idea}}:
+	\begin{enumerate}
+		\item Sea $A = \{x \in [a, b] \text{ / } f(x) > 0\}$
+		\item Como $A$ acotado y no nulo existe sucesión convergente $S_n$ a su supremo $s$
+		\item $S_n$ satisface $f(S_n) \geq 0 $ (\ref{subsec:suc_mayor_a_0_entonces_supremo_mayor_a_0}) entonces $\lim f(s) \geq 0$
+		\item Si $f(s) > 0$ entonces $f$ tiene un entorno en $s$ positivo (\ref{subsec:f_mayor_a_0_en_entorno})
+		\item $s + \epsilon$ es más grande que $s$ como $f(s + \epsilon) > 0 \implies f + \epsilon \in A$
+		\item Luego $s$ no es supremo, con lo cual se llega al absurdo. Luego $f(s) = 0$
+	\end{enumerate}
+}
+
+%% Si f(P)f(Q) < 0 => existe C / f(R) = 0 %%
+\subsubsection{Si $f$ cont. y su dominio arcoconexo / $f(P)f(Q) < 0 \implies \exists \ R \in (a, b) \text{ / } f(R) = 0 \text{ (Bolzano }\mathbb{R}^n$/T.V.M.)}
+\teorema{
+	\textbf{\underline{Formalización}}: si
+	\begin{itemize}
+		\item $f: A \subset \mathbb{R}^n \to \mathbb{R}$
+		\item $f$ contínua
+		\item $A$ arcoconexo
+		\item $\exists \ P, Q \in A \text{ / } f(P)f(Q) < 0$ 
+	\end{itemize}
+	$\implies \exists \ R \in A \text{ / } f(R) = 0$.
+	\vskip 8pt
+	\noindent \textbf{\underline{Idea}}:
+	\begin{enumerate}
+		\item Como el dominio de la función es arcoconexo, puedo caminar desde P a Q con una curva contínua $\alpha$ tal que:
+		\begin{itemize}
+			\item $\alpha(0) = P$
+			\item $\alpha(1) = Q$
+		\end{itemize}
+		\item Sea $g=f \circ \alpha$
+		\begin{itemize}
+			\item Es contínua en $[0, 1]$ porque composición de contínuas
+			\item $g(0)*g(1) < 0 \text{ porque } \alpha(0)=P \text{ y } \alpha(1)=Q$
+		\end{itemize}
+		\item Luego, por Bolzano en $\mathbb{R}$ sobre $g$, existe $c$ tal que $g(c) = 0$
+		\item Finalmente, el $R$ que buscábamos para $f$ es $\alpha(c)$, donde allí se anula
+	\end{enumerate}
+}
+
+%% Si A compacto y f: A -> R cont. => f esta acotada y tiene maximo/minimo %%
+\subsubsection{Si $f$ cont. y su dominio compacto $\implies f$ está acotada y tiene máximo y mínimo (Weierstrass)}
+\teorema{
+	\textbf{\underline{Formalización}}: si
+	\begin{equation}
+		\begin{split}
+			&f: A \subset \mathbb{R}^n \to \mathbb{R} \\
+			&f \text{ contínua} \\
+			&A \text{ compacto}
+		\end{split}
+		\qquad\Longrightarrow\qquad
+		\begin{split}
+			&a) \ \exists \ m,M \in \mathbb{R} \text{ / } m \leq f(X) \leq M, \forall X \in A \\
+			&b) \ \exists \ P_m, P_M \in A \text{ / } f(P_m)=m \land f(P_M) = M
+		\end{split}
+	\end{equation}
+	\vskip 8pt
+	\noindent \textbf{\underline{Idea}}:
+	\begin{enumerate}
+		\item La imagen está acotada
+		\begin{enumerate}
+			\item Supongamos que no está acotada superiormente, luego $\exists \ \{a_n\} \subset A \text{ / } \forall \ n \in \mathbb{N}: f(a_n) > n$
+			\item Como esta sucesión $\{a_n\}$ está en A y A es un conjunto acotado, entonces puedo extraer de ella una subsucesión $\{a_{n_{k}}\}$ convergente a un punto $P$, luego $f(a_{n_k}) \to f(P)$
+			\item Pero por \textbf{(a)} se tiene que $\forall \ n_k \in \mathbb{N}: f(a_{n_k}) > n_k$, y por hipótesis $f$ es contínua en $P$, o sea, la función no diverge ni pega saltos ahí
+			\item Finalmente, $f$ debe estar acotada superiormente
+		\end{enumerate}
+		\item El máximo y mínimo se alcanzan
+		\begin{enumerate}
+			\item Supongamos que el máximo no se alcanza
+			\item Por \textbf{(1)}, sabemos que la imagen está acotada, por lo tanto puedo extraer de allí una sucesión creciente y convergente al supremo $\{y_n\} \subset Im(f) \text{ / } y_n \to sup(Im(f)) = M$
+			\item Como $\{y_n\} \subset Im(f)$, entonces debe existir una sucesión $\{x_n\} \subset A \text{ / } \forall \ n \in \mathbb{N}: y_n = f(x_n)$
+			\begin{itemize}
+				 \item O sea: $\lim f(x_n) = \lim y_n = M$
+			\end{itemize}
+			\item Como $\{x_n\}$ acotada, extraemos una sucesión convergente $\{x_{n_k}\}$
+			\item Luego $\lim x_{n_k}=P_M \in A$ porque A (donde vive esta sucesión) es cerrado, ¡y todo punto ``tendible'' en $A$ es llegable (o sea, pertenece a $A$) por definición de punto de acumulación!
+			\item Finalmente, como $f$ es contínua, $f(P_M)=M$
+		\end{enumerate}
+	\end{enumerate}	
+	\noindent \textbf{\underline{Observación}}: El caso $m$ y $P_m$ es análogo.
+}
+
+%% Si el dominio de una función contínua es compacto, entonces su imagen también lo es %%
+\subsubsection{Si $f$ cont. y su dominio compacto $\implies$ su imagen también lo es}
+\teorema{
+	\textbf{\underline{Formalización}}: Si $F: A \subset \mathbb{R}^n \to \mathbb{R}^m \text{ contínua } \land A \text{ compacto}\implies F(A) \subset \mathbb{R}^n$ compacto
+}

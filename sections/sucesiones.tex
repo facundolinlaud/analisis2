@@ -1,0 +1,46 @@
+\section{Sucesiones}
+
+%% Si A está acotado superiormente entonces existe una sucesión creciente que tiende al supremo %%
+\subsection{Si A está acotado superiormente entonces existe una sucesión creciente que tiende al supremo}
+\teorema{\textbf{\underline{Formalización}}: $\text{Si } s=sup(A) \implies \exists \text{ sucesión creciente } \{a_{n}\} \subset A \mid \lim_{n \to \infty}{a_n} = s$
+	\vskip 8pt
+	\noindent \textbf{\underline{Observación}}: Si $s \not\in A \implies \{a_n\}$ puede ser elegida estrictamente creciente.}
+
+
+%% Si an es una sucesión creciente y acotada superiormente => an converge a su supremo %%
+\subsection{Si $\{a_n\}$ es una sucesión creciente y acotada superiormente, $a_n$ converge a su supremo}
+\teorema{
+	\textbf{\underline{Formalización}}: $\text{Si } \{a_n\} \text{ creciente y acotada superiormente} \implies \lim_{n \to \infty}{a_n} = sup(\{a_n\})$
+}
+
+
+%% Si an sucesión => tiene subsucesión monótona %%
+\subsection{Si $\{a_n\} \in \mathbb{R}^n \implies$ tiene subsucesión monótona}
+
+
+%% (B-W) Si an sucesión => tiene subsucesión convergente %%
+\subsection{Si $\{a_n\} \in \mathbb{R}^n$ acotada $\implies$ tiene subsucesión convergente (Bolzano-Weierstrass)}
+
+
+%% Convergencia de sucesión %%
+\subsection{Convergencia de sucesión}
+\teorema{
+	\textbf{\underline{Formalización}}:
+	\begin{itemize}
+		\item $\{P_n\}_{n \in \mathbb{N}} \subset \mathbb{R}^n$
+		\item $P \in \mathbb{R}^n$
+		\item $\lim P_n = P$ 
+	\end{itemize}
+	\textbf{Si y sólo si} $\forall \ \epsilon > 0, \exists \ n_0 \in \mathbb{N} \text{ / } \lvert\lvert P_n - P \rvert \rvert < \epsilon \ \forall \ n \geq n_0$
+}
+
+%% Divergencia de sucesión %%
+\subsection{Divergencia de sucesión}
+\teorema{
+	\textbf{\underline{Formalización}}:
+	\begin{itemize}
+		\item $\{P_n\}_{n \in \mathbb{N}} \subset \mathbb{R}^n$
+		\item $\lim P_n = \infty$ 
+	\end{itemize}
+	\textbf{Si y sólo si} $\lvert\lvert P_n \rvert \rvert > M \forall \ n \geq n_0$
+}
