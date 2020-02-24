@@ -1,5 +1,23 @@
 \newcommand{\teorema}[1]{\fbox{\parbox{\textwidth}{#1}}}
 
+\newcommand{\modulo}[1]{\lvert #1 \rvert}
+\newcommand{\norma}[1]{\modulo{\modulo{#1}}}
+
+\newcommand{\identacion}{\;\;\;\;}
+
+\makeatletter
+\newenvironment{shiftedflalign}{%
+    \start@align\tw@\st@rredfalse\m@ne%
+    \hskip\parindent
+}{%
+    \endalign
+}
+\newenvironment{shiftedflalign*}{%
+    \start@align\tw@\st@rredtrue\m@ne
+    \hskip\parindent
+}{%
+    \endalign
+}
 % \newcommand{\teorema}[3]{
 % 	\begin{theorem}
 % 		{#1}

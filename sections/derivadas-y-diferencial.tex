@@ -1,0 +1,192 @@
+\section{Derivadas y diferencial}
+%% Gradiente %%
+\subsection{Notación: gradiente y plano tangente}
+\teorema{
+	\begin{equation*}
+		\begin{split}
+			\text{\textbf{Gradiente de f en p:}} \ & \nabla f_P = (f_{x_1}(P), \dots, f_{x_n}(P)) \\
+			\text{\textbf{Diferencial de f en p:}}  \ & Df_P(Y) = \ <\nabla f_P, Y> \ = \sum_{i=1 \dots n} f_{x_i}(P) * y_i \\
+			\text{\textbf{Plano tg a f en p:}} \ & x_{n+1} = f(P) \ + <\nabla f_P, X - P> \\
+			\text{\textbf{Desigualdad Cauchy–Schartz:}} \ & \modulo{Df_P(X)} = \modulo{<\nabla f_P, X>} \leq \norma{\nabla f_P} \cdot \norma{X}
+		\end{split}
+	\end{equation*}
+}
+
+%% Diferenciabilidad %%
+\subsection{Diferenciabilidad}
+\teorema{
+	\textbf{\underline{Formalización}}:
+	\begin{equation*}
+		\begin{split}
+			f \text{ diferenciable en } p
+		\end{split}
+		\qquad\Longleftrightarrow\qquad
+		\begin{split}
+			&f: A \subset \mathbb{R}^n \to \mathbb{R}^m \\
+			&P \in A^0 \\
+			&\text{Las derivadas parciales de } f \text{ existen en } P \\
+			&lim_{X \to P} \frac{\lvert f(X) - f(P) - <\nabla f_P, X - P> \rvert}{\norma{X - P}}=0
+		\end{split}
+	\end{equation*}
+}
+
+%% Diferenciable => Continua %%
+\subsection{Si $f$ diferenciable en $P$ $\implies f$ contínua en $P$}
+\teorema{
+	\textbf{\underline{Formalización}}:
+	\begin{equation*}
+		\begin{split}
+			&P \in A^0 \\
+			&f: A \subset \mathbb{R}^n \to \mathbb{R} \\
+			&f \ \text{diferenciable en } P
+		\end{split}
+		\qquad\Longrightarrow\qquad
+		\begin{split}
+			f \text{ contínua en } P
+		\end{split}
+	\end{equation*}
+	\vskip 8pt
+	\textbf{\underline{Idea}}: quiero ver que $\modulo{f(X) - f(P)} \to 0$ con $x \to P$
+	\begin{equation*}
+		\begin{split}
+			\modulo{f(X) - f(P)} \\
+			\\ \\ \\
+		\end{split}
+		\quad
+		\begin{split}
+		= \\ \\ \\ \\
+		\end{split}
+		\quad
+		\begin{split}
+			&\modulo{f(X) - f(P) - Df_P(X-P) + Df_P(X-P)} \\
+			&\modulo{f(X) - f(P) - Df_P(X-P)} + \modulo{Df_P(X-P)} \\
+			&\modulo{f(X) - f(P) - Df_P(X-P)} \ + <\nabla f_P, X - P> \\
+			&\modulo{f(X) - f(P) - Df_P(X-P)} + \norma{\ \nabla f_P \ } \cdot \norma{\ X-P\ }
+		\end{split}
+		\quad
+		\begin{split}
+		&\leq \\ &\leq \\ &\leq \text{(c-s)} \\ &\to 0
+		\end{split}
+	\end{equation*}
+	Porque:
+	\begin{itemize}
+		\item $\modulo{f(X) - f(P) - Df_P(X-P)} = \frac{\modulo{f(X) - f(P) - Df_P(X-P)}}{\norma{X-P}} \cdot \norma{X-P}$
+		\begin{itemize}
+			\item Como $f$ es diferenciable, la cosa grande tiende a $0$.
+			\item $\norma{X-P}$ también tiende a $0$ dado que $X \to P$
+		\end{itemize}
+		\item $\norma{\nabla f_P}$ es anulado por $\norma{X-P}$
+	\end{itemize}
+}
+
+%% Si existe transformación lineal diferencial => existen todas las direccionales %%
+\subsection{Si existe transformación lineal diferencial $\implies$ existen todas las direccionales}
+\teorema{
+	\textbf{\underline{Formalización}: si}
+	\begin{itemize}
+		\item $f: A \subset \mathbb{R}^n \to \mathbb{R}$
+		\item $P \in A^0$
+		\item $\exists \ T_P: \mathbb{R}^n \to \mathbb{R} \text{ / } \lim_{X \to P} \frac{\modulo{f(X) - f(P) - T_P(X-P)}}{\norma(X-P)}=0$
+	\end{itemize}
+	\textbf{entonces}:
+	\begin{enumerate}
+		\item Existen todas las derivadas direccionales de $f$ en $P$ y vale: $f_V(p) = T_P(V) \ \forall \ V \in \mathbb{R}^n$, con $\norma{V} = 1$
+		\item En particular, existen todas las parciales (utilizando los vectores canónicos)
+		\item Se tiene $T_P(X) = Df_P(X) = <\nabla f_P, X> \forall \ X \in \mathbb{R}^n$ y $f$ diferenciable en $P$
+	\end{enumerate}
+	\textbf{\underline{Idea}}: quiero ver que $\lim_{t \to 0} \frac{\modulo{f(P + tV) - f(P)}}{t}=0$
+	\begin{equation*}
+		\begin{split}
+			\lim_{X \to P} \frac{\modulo{f(X) - f(P) - T_P(X-P)}}{\norma{X-P}} \quad &= \quad \lim_{X \to P} \frac{\modulo{f(X) - f(P) - T_P(X-P)}}{\norma{X-P}} \\
+			\quad &= \quad \lim_{t \to 0} \frac{\modulo{f(P + tV) - f(P) - t \cdot T_P(V)}}{\norma{t}} \\
+			\quad &= \quad \lim_{t \to 0} \ \Bigl| \frac{f(P + tV) - f(P) - t \cdot T_P(V)}{t} \Bigr| \\
+			\quad &= \quad \lim_{t \to 0} \ \Bigl| \frac{f(P + tV) - f(P)}{t} - T_P(V) \Bigr| \\
+			&= 0 \text{, dado que } f \text{ es diferenciable.}
+		\end{split}
+	\end{equation*}
+	\begin{enumerate}
+		\item $\lim_{t \to 0} \ \Bigl| \frac{f(P + tV) - f(P)}{t}\Bigr| = T_P(V)$ y $T_P(V)$ está definida para todo $V \in \mathbb{R}^n$ por ser $T$ transformación lineal.
+		\item En particular, tomando cualquier $E_i$ se tiene que el límite existe, por lo tanto las parciales existen
+		\item Te la debo % TODO
+	\end{enumerate}
+}
+
+%% Fermat %%
+\subsection{Si $f$ derivable en $c \in (a, b)$ y $c$ extremo local $\implies f'(c) = 0$ (Fermat $\mathbb{R}$)}
+\teorema{
+	\textbf{\underline{Formalización}:}
+	\begin{equation*}
+		\begin{split}
+			&f: [a, b] \to \mathbb{R} \\
+			&f \text{ derivable en } (a, b) \\
+			&c \in (a, b) \text{ extremo local}
+		\end{split}
+		\qquad\Longrightarrow\qquad
+		\begin{split}
+			&f'(c) = 0
+		\end{split}
+	\end{equation*}
+	\textbf{\underline{Idea}}:
+	\begin{enumerate}
+		\item Supongamos que $f$ tiene un máximo local en $c$, luego existe un $\epsilon > 0 \text{ / } \forall \ x \in (c - \epsilon, c + \epsilon): f(x) \leq f(c)$
+		\item Si nos acercamos a $c$ por izquierda: $\lim_{t \to 0^-} \frac{f(c + t) - f(c)}{t} \geq 0$
+		\item Y si lo hacemos por derecha, tenemos: $\lim_{t \to 0^+} \frac{f(c + t) - f(c)}{t} \leq 0$
+		\item Por lo tanto, la única posiblidad que queda es que $\lim_{t \to 0} \frac{f(c + t) - f(c)}{t} = 0$, o sea $f'(c) = 0$
+	\end{enumerate}
+	\textbf{\underline{Observación}:} El caso de extremo mínimo es análogo
+}
+
+%% Rolle %%
+\subsection{Si $f$ contínua en $[a, b]$, derivable en $(a, b)$ y $f(a) = f(b) \implies \text{existe } c \in (a, b) \text{ / } f'(c) = 0$ (Rolle en $\mathbb{R}$)}
+\teorema{
+	\textbf{\underline{Formalización}:}
+	\begin{equation*}
+		\begin{split}
+			&f: [a, b] \to \mathbb{R} \\
+			&f \text{ contínua en } [a, b] \\
+			&f \text{ derivable en } (a, b) \\
+			&f(a) = f(b)
+		\end{split}
+		\qquad\Longrightarrow\qquad
+		\begin{split}
+			&\exists \ c \in (a, b) \text{ / } f'(c) = 0
+		\end{split}
+	\end{equation*}
+	\textbf{\underline{Idea}}:
+	\begin{enumerate}
+		\item Si $f$ constante entonces $\forall \ x \in (a, b): f'(x) = 0$
+		\item Si $f$ no es constante, como es contínua en $[a, b]$ y derivable en $(a, b)$, entonces – por Weierstrass – su imagen está acotada y sus extremos son alcanzados (también se podría decir que su imagen es cerrada por corolario)
+		\item Sea $c \in (a, b)$ un extremo en $f$, luego, por Fermat: $f'(c) = 0$
+	\end{enumerate}
+}
+
+%% Lagrange %%
+\subsection{Si $f$ contínua en $[a, b]$ y derivable en $(a, b) \implies \text{existe } c \in (a, b) \text{ / } f'(c) = \frac{f(b) - f(a)}{b-a}$ (Lagrange en $\mathbb{R}$)}
+\teorema{
+	\textbf{\underline{Formalización}:}
+	\begin{equation*}
+		\begin{split}
+			&f: [a, b] \to \mathbb{R} \\
+			&f \text{ contínua en } [a, b] \\
+			&f \text{ derivable en } (a, b)
+		\end{split}
+		\qquad\Longrightarrow\qquad
+		\begin{split}
+			&\exists \ c \in (a, b) \text{ / } f'(c) = \frac{f(b) - f(a)}{b-a}
+		\end{split}
+	\end{equation*}
+	\textbf{\underline{Idea}}:
+	\begin{enumerate}
+		\item Sea $L$ la función lineal que conecta las dos puntas de $f$, o sea: $(a, f(a))$ con $(b, f(b))$
+		\item Y sea $g(x) = f(x) - L(x)$ que es contínua y derivable pues $f$ lo es y $L$ es función lineal
+		\item Como $g(a) = f(a) - L(a) = 0$ y $g(b) = f(b) - L(b) = 0 \implies g(a) = g(b)$
+		\item Por Rolle, existe $c \in (a, b) \text{ / } g'(c) = 0$
+		\item Tomemos la derivada de $g$ en $c$, que es: $g'(c) = f'(c) - L'(c) = 0$
+		\item Pasando para el otro lado: $f'(c) = L'(c)$
+		\begin{enumerate}
+			\item Recordemos que $L$ es de la forma $mx + k$, por lo tanto $L'(x) = m$ con $m$ pendiente de $L$
+		\end{enumerate}
+		\item Por lo tanto $f'(c) = m$ donde $m = \frac{\nabla y}{\nabla x} = \frac{f(b) - f(a)}{b-a}$
+		\item Finalmente $f'(c) = \frac{f(b) - f(a)}{b-a}$, como se quería probar
+	\end{enumerate}
+}
